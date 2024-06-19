@@ -12,8 +12,9 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container">
-        {% block body %}{% endblock %}
+        <div class="root">
         </div>
     </body>
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') }}
 </html>
