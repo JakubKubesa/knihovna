@@ -8,6 +8,12 @@ main:
     path: /main
     controller: App\Controller\MainController::index
 
+addAutor:
+    path: /addAutor
+    controller: App\Controller\AddautorController::index
+
+
+# ziskávání dat pro zobrazení
 api_autors:
     path: /api/autors
     controller: App\Controller\AutorController::getAutors
