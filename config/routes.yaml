@@ -14,7 +14,7 @@ addAutor:
 
 
 # ziskávání dat pro zobrazení
-api_autors:
+api_get_autors:
     path: /api/autors
     controller: App\Controller\AutorController::getAutors
     methods: GET
@@ -23,3 +23,9 @@ api_knihy:
     path: /api/knihy
     controller: App\Controller\KnihaController::getKnihy
     methods: GET
+
+# posílání dat pro databázi
+api_create_autors:
+    path: /api/autors
+    controller: App\Controller\AddautorController::create
+    methods: POST

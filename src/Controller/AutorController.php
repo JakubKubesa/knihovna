@@ -26,4 +26,5 @@ class AutorController extends AbstractController
 
         return new JsonResponse($data);
     }
+
 }
