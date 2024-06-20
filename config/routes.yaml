@@ -1,5 +1,19 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+# config/routes.yaml
+
+index:
+    path: /
+    controller: App\Controller\MainController::index
+
+main:
+    path: /main
+    controller: App\Controller\MainController::index
+
+api_autors:
+    path: /api/autors
+    controller: App\Controller\AutorController::getAutors
+    methods: GET
+
+api_knihy:
+    path: /api/knihy
+    controller: App\Controller\KnihaController::getKnihy
+    methods: GET
