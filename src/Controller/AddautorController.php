@@ -16,7 +16,7 @@ class AddautorController extends AbstractController
     #[Route('/addAutor', name: 'app_addAutor')]
     public function index(): Response
     {
-        return $this->render('Addautor/index.html.twig', [
+        return $this->render('main/index.html.twig', [
             'controller_name' => 'AddautorController',
         ]);
     }

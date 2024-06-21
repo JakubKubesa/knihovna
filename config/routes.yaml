@@ -12,6 +12,9 @@ addAutor:
     path: /addAutor
     controller: App\Controller\AddautorController::index
 
+addBook:
+    path: /addBook
+    controller: App\Controller\AddbookController::index
 
 # ziskávání dat pro zobrazení
 api_get_autors:
@@ -28,4 +31,9 @@ api_knihy:
 api_create_autors:
     path: /api/autors
     controller: App\Controller\AddautorController::create
+    methods: POST
+
+api_create_books:
+    path: /api/books
+    controller: App\Controller\AddbookController::create
     methods: POST

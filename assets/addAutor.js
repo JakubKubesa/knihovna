@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ReactDOM from 'react-dom/client';
 
 const AutorForm = () => {
   const [jmeno, setJmeno] = useState('');
@@ -61,6 +60,4 @@ const AutorForm = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <AutorForm />
-);
+export default AutorForm;

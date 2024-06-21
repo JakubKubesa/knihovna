@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function TableA() {
     const [autors, setAutors] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/autors')
@@ -15,8 +16,13 @@ function TableA() {
             });
     }, []);
 
+    const handleAddAuthor = () => {
+        navigate('/addAutor');
+    };
+
     return (
         <>
+            <button onClick={handleAddAuthor}>Add Author</button>
             <table>
                 <thead>
                     <tr>
@@ -41,6 +47,7 @@ function TableA() {
 
 function TableK() {
     const [knihy, setKnihy] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/knihy')
@@ -52,8 +59,13 @@ function TableK() {
             });
     }, []);
 
+    const handleAddBook = () => {
+        navigate('/addBook');
+    };
+
     return (
         <>
+            <button onClick={handleAddBook}>Add Book</button>
             <table>
                 <thead>
                     <tr>
@@ -89,6 +101,4 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <App />
-);
+export default App;
