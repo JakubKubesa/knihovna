@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Repository\KnihaRepository;
+use App\Repository\AutorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,4 +61,5 @@ class BookController extends AbstractController
 
         return new JsonResponse(['status' => 'Book created!'], JsonResponse::HTTP_CREATED);
     }
+
 }

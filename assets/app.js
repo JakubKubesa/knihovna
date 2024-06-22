@@ -62,7 +62,7 @@ function TableK() {
     };
 
     const handleRowClick = (id) => {
-        navigate(`/kniha/${id}`);
+        navigate(`/knihaDetail/${id}`);
     };
 
     return (

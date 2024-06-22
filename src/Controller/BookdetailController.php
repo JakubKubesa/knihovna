@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\Kniha;
+use App\Entity\Autor;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -96,4 +97,66 @@ class BookdetailController extends AbstractController
             return new JsonResponse(['error' => 'Internal Server Error'], 500);
         }
     }
+
+
+
+    /**
+ * @Route("/api/knihaDetail/{id}", name="get_kniha_detail", methods={"GET"})
+ */
+public function getBookDetail($id, EntityManagerInterface $em, LoggerInterface $logger): JsonResponse
+{
+    try {
+        // Najdeme knihu podle ID
+        $kniha = $em->getRepository(Kniha::class)->find($id);
+        if (!$kniha) {
+            // Pokud kniha s daným ID neexistuje, vrátíme 404 Not Found
+            return new JsonResponse(['error' => 'Kniha not found'], 404);
+        }
+
+        // Najdeme autora podle ID_A v knize
+        $autorId = $kniha->getIDA();
+        $logger->info('Searching for author with ID: ' . $autorId);
+        $autor = $em->getRepository(Autor::class)->find($autorId);
+        if (!$autor) {
+            // Pokud autor není nalezen, vrátíme 404 Not Found
+            return new JsonResponse(['error' => 'Autor not found'], 404);
+        }
+
+        // Sestavíme data autora
+        $autorData = [
+            'id' => $autor->getId(),
+            'jmeno' => $autor->getJmeno(),
+            'prijmeni' => $autor->getPrijmeni(),
+            'datum_narozeni' => $autor->getDatumNarozeni()->format('Y-m-d'),
+        ];
+
+        // Sestavíme data knihy a autora do odpovědi
+        $data = [
+            'id' => $kniha->getId(),
+            'nazev' => $kniha->getNazev(),
+            'rok_publikace' => $kniha->getRokPublikace(),
+            'id_a' => $autorId,
+            'pocet_stran' => $kniha->getPocetStran(),
+            'format' => $kniha->getFormat(),
+            'cena' => $kniha->getCena(),
+            'author' => $autorData
+        ];
+
+        // Vrátíme JSON odpověď
+        return new JsonResponse($data, 200);
+
+    } catch (\Exception $e) {
+        // Pokud došlo k výjimce, zalogujeme ji a vrátíme 500 Internal Server Error
+        $logger->error('Error fetching book detail: ' . $e->getMessage());
+        return new JsonResponse(['error' => 'Internal Server Error'], 500);
+    }
+}
+
+
+
+
+    
+    
+
+
 }

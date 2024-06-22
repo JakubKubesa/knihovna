@@ -16,6 +16,7 @@ addBook:
     path: /addBook
     controller: App\Controller\BookController::index
 
+
 # ziskávání dat pro zobrazení
 api_get_autors:
     path: /api/autors
@@ -27,6 +28,7 @@ api_knihy:
     controller: App\Controller\BookController::getKnihy
     methods: GET
 
+
 # posílání dat pro databázi
 api_create_autors:
     path: /api/autors
@@ -37,6 +39,7 @@ api_create_books:
     path: /api/books
     controller: App\Controller\BookController::create
     methods: POST
+
 
 
 
@@ -59,9 +62,22 @@ delete_kniha:
     methods: DELETE
 
 
+
+# get book detail autor, book
+book_detail:
+    path: /api/knihaDetail/{id}
+    controller: App\Controller\BookdetailController::getBookDetail
+    methods: GET
+    
+
+    
 # Catch-all route to handle frontend routing
 frontend:
     path: /{reactRouting}
     controller: App\Controller\MainController::index
     requirements:
         reactRouting: .*
+
+
+
+
