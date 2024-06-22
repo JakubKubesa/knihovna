@@ -10,11 +10,11 @@ main:
 
 addAutor:
     path: /addAutor
-    controller: App\Controller\AddautorController::index
+    controller: App\Controller\AutorController::index
 
 addBook:
     path: /addBook
-    controller: App\Controller\AddbookController::index
+    controller: App\Controller\BookController::index
 
 # ziskávání dat pro zobrazení
 api_get_autors:
@@ -24,18 +24,18 @@ api_get_autors:
 
 api_knihy:
     path: /api/knihy
-    controller: App\Controller\KnihaController::getKnihy
+    controller: App\Controller\BookController::getKnihy
     methods: GET
 
 # posílání dat pro databázi
 api_create_autors:
     path: /api/autors
-    controller: App\Controller\AddautorController::create
+    controller: App\Controller\AutorController::create
     methods: POST
 
 api_create_books:
     path: /api/books
-    controller: App\Controller\AddbookController::create
+    controller: App\Controller\BookController::create
     methods: POST
 
 

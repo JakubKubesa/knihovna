@@ -8,6 +8,10 @@ const AutorForm = () => {
   const [datumNarozeni, setDatumNarozeni] = useState('');
   const navigate = useNavigate();
 
+  const back = () => {
+    navigate('/');
+  }
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,6 +24,7 @@ const AutorForm = () => {
     try {
       const response = await axios.post('http://localhost:8000/api/autors', newAutor);
       console.log(response.data);
+      navigate('/');
     } catch (error) {
       console.error('There was an error creating the author!', error);
       if (error.response) {
@@ -28,9 +33,7 @@ const AutorForm = () => {
     }
   };
 
-  const back = () => {
-    navigate('/');
-  }
+  
 
   return (
     <>

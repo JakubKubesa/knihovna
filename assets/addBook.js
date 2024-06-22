@@ -11,6 +11,9 @@ const BookForm = () => {
   const [cena, setCena] = useState('');
   const navigate = useNavigate();
 
+  const back = () => {
+    navigate('/');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +30,7 @@ const BookForm = () => {
     try {
       const response = await axios.post('http://localhost:8000/api/books', newBook);
       console.log(response.data);
+      navigate('/');
     } catch (error) {
       console.error('There was an error creating the book!', error);
       if (error.response) {
@@ -35,11 +39,7 @@ const BookForm = () => {
     }
   };
 
-  const back = () => {
-    navigate('/');
-  }
-
-
+  
   return (
     <>
     <button type="button" onClick={back}>Back</button>
