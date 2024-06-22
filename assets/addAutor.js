@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AutorForm = () => {
   const [jmeno, setJmeno] = useState('');
   const [prijmeni, setPrijmeni] = useState('');
   const [datumNarozeni, setDatumNarozeni] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +28,13 @@ const AutorForm = () => {
     }
   };
 
+  const back = () => {
+    navigate('/');
+  }
+
   return (
+    <>
+    <button type="button" onClick={back}>Back</button>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Jméno:</label>
@@ -57,6 +65,7 @@ const AutorForm = () => {
       </div>
       <button type="submit">Přidat autora</button>
     </form>
+    </>
   );
 };
 

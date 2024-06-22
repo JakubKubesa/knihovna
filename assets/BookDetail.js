@@ -39,6 +39,11 @@ const BookDetail = () => {
             .catch(error => console.error('There was an error deleting the book!', error));
     };
 
+    const back = () => {
+        navigate('/');
+    }
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.put(`http://localhost:8000/api/kniha/${id}`, book)
@@ -54,6 +59,7 @@ const BookDetail = () => {
     return (
         <div>
             <h1>Book Detail</h1>
+            <button type="button" onClick={back}>Back</button>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Název</label>

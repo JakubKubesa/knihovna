@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const BookForm = () => {
@@ -8,6 +9,7 @@ const BookForm = () => {
   const [pocet_stran, setPocetStran] = useState('');
   const [format, setFormat] = useState('');
   const [cena, setCena] = useState('');
+  const navigate = useNavigate();
 
 
   const handleSubmit = async (e) => {
@@ -33,7 +35,14 @@ const BookForm = () => {
     }
   };
 
+  const back = () => {
+    navigate('/');
+  }
+
+
   return (
+    <>
+    <button type="button" onClick={back}>Back</button>
     <form onSubmit={handleSubmit}>
       <div>
         <label>název:</label>
@@ -91,6 +100,7 @@ const BookForm = () => {
       </div>
       <button type="submit">Přidat Knihu</button>
     </form>
+    </>
   );
 };
 
