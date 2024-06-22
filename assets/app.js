@@ -21,9 +21,9 @@ function TableA() {
     };
 
     return (
-        <>
-            <button onClick={handleAddAuthor}>Add Author</button>
-            <table>
+        <div className="container mt-4">
+            <button className="btn btn-primary mb-3" onClick={handleAddAuthor}>Add Author</button>
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -39,7 +39,7 @@ function TableA() {
                     ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
 
@@ -66,9 +66,9 @@ function TableK() {
     };
 
     return (
-        <>
-            <button onClick={handleAddBook}>Add Book</button>
-            <table>
+        <div className="container mt-4">
+            <button className="btn btn-primary mb-3" onClick={handleAddBook}>Add Book</button>
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -84,15 +84,15 @@ function TableK() {
                     ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
 
 class App extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Knihovní systém</h1>
+            <div className="container">
+                <h1 className="my-4">Knihovní systém</h1>
                 <TableA />
                 <TableK />
             </div>

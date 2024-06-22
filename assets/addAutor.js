@@ -33,42 +33,47 @@ const AutorForm = () => {
     }
   };
 
-  
-
   return (
-    <>
-    <button type="button" onClick={back}>Back</button>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Jméno:</label>
-        <input 
-          type="text" 
-          value={jmeno} 
-          onChange={(e) => setJmeno(e.target.value)} 
-          required 
-        />
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="col-12 col-md-6 col-lg-4">
+        <form onSubmit={handleSubmit} className="p-4 border rounded bg-light">
+          <div className="mb-3">
+            <label className="form-label">Jméno:</label>
+            <input 
+              type="text" 
+              className="form-control"
+              value={jmeno} 
+              onChange={(e) => setJmeno(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Příjmení:</label>
+            <input 
+              type="text" 
+              className="form-control"
+              value={prijmeni} 
+              onChange={(e) => setPrijmeni(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Datum narození:</label>
+            <input 
+              type="date" 
+              className="form-control"
+              value={datumNarozeni} 
+              onChange={(e) => setDatumNarozeni(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="d-flex justify-content-between">
+            <button type="button" className="btn btn-secondary" onClick={back}>Back</button>
+            <button type="submit" className="btn btn-primary">Přidat autora</button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Příjmení:</label>
-        <input 
-          type="text" 
-          value={prijmeni} 
-          onChange={(e) => setPrijmeni(e.target.value)} 
-          required 
-        />
-      </div>
-      <div>
-        <label>Datum narození:</label>
-        <input 
-          type="date" 
-          value={datumNarozeni} 
-          onChange={(e) => setDatumNarozeni(e.target.value)} 
-          required 
-        />
-      </div>
-      <button type="submit">Přidat autora</button>
-    </form>
-    </>
+    </div>
   );
 };
 

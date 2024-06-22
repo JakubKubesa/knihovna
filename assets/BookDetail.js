@@ -30,24 +30,29 @@ const BookDetail = () => {
     }
 
     return (
-        <div>
-            <h1>{book.nazev}</h1>
-            <p>Rok publikace: {book.rok_publikace}</p>
-            <p>Počet stran: {book.pocet_stran}</p>
-            <p>Formát: {book.format}</p>
-            <p>Cena: {book.cena}</p>
-            {book.author && (
-                    <div>
-                        <h3>Autor</h3>
-                        <p>Jméno: {book.author.jmeno}</p>
-                        <p>Příjmení: {book.author.prijmeni}</p>
-                        <p>Datum narození: {book.author.datum_narozeni}</p>
+        <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="col-12 col-md-8 col-lg-6">
+                <div className="p-4 border rounded bg-light">
+                    <h1>{book.nazev}</h1>
+                    <p>Rok publikace: {book.rok_publikace}</p>
+                    <p>Počet stran: {book.pocet_stran}</p>
+                    <p>Formát: {book.format}</p>
+                    <p>Cena: {book.cena}</p>
+                    {book.author && (
+                        <div>
+                            <h3>Autor</h3>
+                            <p>Jméno: {book.author.jmeno}</p>
+                            <p>Příjmení: {book.author.prijmeni}</p>
+                            <p>Datum narození: {book.author.datum_narozeni}</p>
+                        </div>
+                    )}
+                    <div className="mt-3">
+                        <button type="button" className="btn btn-primary me-2" onClick={() => handleRowClick(book.id)}>Update</button>
+                        <button type="button" className="btn btn-secondary" onClick={back}>Back</button>
                     </div>
-                )}
-            <button type="button" onClick={() => handleRowClick(book.id)}>Update</button>  
-            <button type="button" onClick={back}>Back</button>    
+                </div>
+            </div>
         </div>
-        
     );
 };
 

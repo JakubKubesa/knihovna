@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-    </head>
-        {% block javascript %}
-            {{ encore_entry_script_tags('index') }}
-        {% endblock %}
-
-    
-    <body>
-        {% block body%}{% endblock %}
-    </body>
-</html>       
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('index') }}
+    {% endblock %}
+</head>
+<body>
+    <div id="root"></div>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('index') }}
+    {% endblock %}
+</body>
+</html>

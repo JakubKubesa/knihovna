@@ -4,9 +4,9 @@ import axios from 'axios';
 
 const BookForm = () => {
   const [nazev, setNazev] = useState('');
-  const [rok_publikace, setRokPublikace] = useState('');
-  const [id_a, setIDA] = useState('');
-  const [pocet_stran, setPocetStran] = useState('');
+  const [rokPublikace, setRokPublikace] = useState('');
+  const [idA, setIDA] = useState('');
+  const [pocetStran, setPocetStran] = useState('');
   const [format, setFormat] = useState('');
   const [cena, setCena] = useState('');
   const navigate = useNavigate();
@@ -20,9 +20,9 @@ const BookForm = () => {
 
     const newBook = {
       nazev,
-      rok_publikace,
-      id_a,
-      pocet_stran,
+      rok_publikace: rokPublikace,
+      id_a: idA,
+      pocet_stran: pocetStran,
       format,
       cena
     };
@@ -39,68 +39,77 @@ const BookForm = () => {
     }
   };
 
-  
   return (
-    <>
-    <button type="button" onClick={back}>Back</button>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>název:</label>
-        <input 
-          type="text" 
-          value={nazev} 
-          onChange={(e) => setNazev(e.target.value)} 
-          required 
-        />
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="col-12 col-md-6 col-lg-4">
+        <form onSubmit={handleSubmit} className="p-4 border rounded bg-light">
+          <div className="mb-3">
+            <label className="form-label">Název:</label>
+            <input 
+              type="text" 
+              className="form-control"
+              value={nazev} 
+              onChange={(e) => setNazev(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Rok publikace:</label>
+            <input 
+              type="number" 
+              className="form-control"
+              value={rokPublikace} 
+              onChange={(e) => setRokPublikace(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">ID autora:</label>
+            <input 
+              type="number" 
+              className="form-control"
+              value={idA} 
+              onChange={(e) => setIDA(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Počet stran:</label>
+            <input 
+              type="number" 
+              className="form-control"
+              value={pocetStran} 
+              onChange={(e) => setPocetStran(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Formát:</label>
+            <input 
+              type="text" 
+              className="form-control"
+              value={format} 
+              onChange={(e) => setFormat(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Cena:</label>
+            <input 
+              type="number" 
+              className="form-control"
+              value={cena} 
+              onChange={(e) => setCena(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className="d-flex justify-content-between">
+            <button type="button" className="btn btn-secondary" onClick={back}>Back</button>
+            <button type="submit" className="btn btn-primary">Přidat Knihu</button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>rok publikace:</label>
-        <input 
-          type="number" 
-          value={rok_publikace} 
-          onChange={(e) => setRokPublikace(e.target.value)} 
-          required 
-        />
-      </div>
-      <div>
-        <label>ID autora:</label>
-        <input 
-          type="number" 
-          value={id_a} 
-          onChange={(e) => setIDA(e.target.value)} 
-          required 
-        />
-      </div>
-      <div>
-        <label>počet stran:</label>
-        <input 
-          type="number" 
-          value={pocet_stran} 
-          onChange={(e) => setPocetStran(e.target.value)} 
-          required 
-        />
-      </div>
-      <div>
-        <label>formát:</label>
-        <input 
-          type="text" 
-          value={format} 
-          onChange={(e) => setFormat(e.target.value)} 
-          required 
-        />
-      </div>
-      <div>
-        <label>cena:</label>
-        <input 
-          type="number" 
-          value={cena} 
-          onChange={(e) => setCena(e.target.value)} 
-          required 
-        />
-      </div>
-      <button type="submit">Přidat Knihu</button>
-    </form>
-    </>
+    </div>
   );
 };
 

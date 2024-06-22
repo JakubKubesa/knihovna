@@ -6,6 +6,7 @@ import AddAutor from './addAutor';
 import AddBook from './addBook';
 import BookChange from './BookChange';
 import BookDetail from './BookDetail';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

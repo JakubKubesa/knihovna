@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-const BookDetail = () => {
+const BookChange = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [book, setBook] = useState({
@@ -43,7 +42,6 @@ const BookDetail = () => {
         navigate('/');
     }
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.put(`http://localhost:8000/api/kniha/${id}`, book)
@@ -57,69 +55,81 @@ const BookDetail = () => {
     };
 
     return (
-        <div>
-            <h1>Book Change</h1>
-            <button type="button" onClick={back}>Back</button>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Název</label>
-                    <input 
-                        type="text" 
-                        name="nazev" 
-                        value={book.nazev || ''} 
-                        onChange={handleChange} 
-                    />
+        <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="col-12 col-md-8 col-lg-6">
+                <div className="p-4 border rounded bg-light">
+                    <h1>Book Change</h1>
+                    <button type="button" className="btn btn-secondary mb-3" onClick={back}>Back</button>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label className="form-label">Název</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="nazev"
+                                value={book.nazev || ''}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Rok publikace</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="rok_publikace"
+                                value={book.rok_publikace || ''}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">ID A</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="ID_A"
+                                value={book.ID_A || ''}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Počet stran</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="pocet_stran"
+                                value={book.pocet_stran || ''}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Formát</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="format"
+                                value={book.format || ''}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Cena</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="cena"
+                                value={book.cena || ''}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="d-flex justify-content-between">
+                            <button type="submit" className="btn btn-primary me-2">Update</button>
+                            <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label>Rok publikace</label>
-                    <input 
-                        type="number" 
-                        name="rok_publikace" 
-                        value={book.rok_publikace || ''} 
-                        onChange={handleChange} 
-                    />
-                </div>
-                <div>
-                    <label>ID A</label>
-                    <input 
-                        type="number" 
-                        name="ID_A" 
-                        value={book.ID_A || ''} 
-                        onChange={handleChange} 
-                    />
-                </div>
-                <div>
-                    <label>Počet stran</label>
-                    <input 
-                        type="number" 
-                        name="pocet_stran" 
-                        value={book.pocet_stran || ''} 
-                        onChange={handleChange} 
-                    />
-                </div>
-                <div>
-                    <label>Formát</label>
-                    <input 
-                        type="text" 
-                        name="format" 
-                        value={book.format || ''} 
-                        onChange={handleChange} 
-                    />
-                </div>
-                <div>
-                    <label>Cena</label>
-                    <input 
-                        type="number" 
-                        name="cena" 
-                        value={book.cena || ''} 
-                        onChange={handleChange} 
-                    />
-                </div>
-                <button type="submit">Update</button>
-                <button type="button" onClick={handleDelete}>Delete</button>
-            </form>
+            </div>
         </div>
     );
 };
 
-export default BookDetail;
+export default BookChange;
