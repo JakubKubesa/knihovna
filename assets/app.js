@@ -43,8 +43,6 @@ function TableA() {
     );
 }
 
-
-
 function TableK() {
     const [knihy, setKnihy] = useState([]);
     const navigate = useNavigate();
@@ -63,6 +61,10 @@ function TableK() {
         navigate('/addBook');
     };
 
+    const handleRowClick = (id) => {
+        navigate(`/kniha/${id}`);
+    };
+
     return (
         <>
             <button onClick={handleAddBook}>Add Book</button>
@@ -75,7 +77,7 @@ function TableK() {
                 </thead>
                 <tbody>
                     {knihy.map(kniha => (
-                        <tr key={kniha.id}>
+                        <tr key={kniha.id} onClick={() => handleRowClick(kniha.id)}>
                             <td>{kniha.id}</td>
                             <td>{kniha.nazev}</td>
                         </tr>
@@ -85,9 +87,6 @@ function TableK() {
         </>
     );
 }
-
-
-
 
 class App extends React.Component {
     render() {

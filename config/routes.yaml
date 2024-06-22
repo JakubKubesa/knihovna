@@ -37,3 +37,31 @@ api_create_books:
     path: /api/books
     controller: App\Controller\AddbookController::create
     methods: POST
+
+
+
+# Route to get the details of a book
+get_kniha:
+    path: /api/kniha/{id}
+    controller: App\Controller\BookdetailController::getKniha
+    methods: GET
+
+# Route to update a book
+update_kniha:
+    path: /api/kniha/{id}
+    controller: App\Controller\BookdetailController::updateKniha
+    methods: PUT
+
+# Route to delete a book
+delete_kniha:
+    path: /api/kniha/{id}
+    controller: App\Controller\BookdetailController::deleteKniha
+    methods: DELETE
+
+
+# Catch-all route to handle frontend routing
+frontend:
+    path: /{reactRouting}
+    controller: App\Controller\MainController::index
+    requirements:
+        reactRouting: .*
