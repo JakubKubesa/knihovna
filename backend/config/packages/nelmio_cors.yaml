@@ -1,0 +1,15 @@
+# config/packages/nelmio_cors.yaml
+nelmio_cors:
+    defaults:
+        allow_origin: ['http://localhost:3000'] # nebo ['*'] pokud chcete povolit přístup z jakéhokoliv původu
+        allow_credentials: false
+        allow_headers: ['Content-Type', 'Authorization']
+        expose_headers: []
+        allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] # opravena chyba v seznamu metod
+        max_age: 3600
+    paths:
+        '^/api/':
+            allow_origin: ['http://localhost:3000'] # nebo ['*'] pokud chcete povolit přístup z jakéhokoliv původu
+            allow_headers: ['Content-Type', 'Authorization']
+            allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] # opravena chyba v seznamu metod
+            max_age: 3600
